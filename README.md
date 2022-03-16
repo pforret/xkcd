@@ -10,6 +10,8 @@
 
 View a XKCD comic in your console
 
+inspired by [Read XKCD in the terminal with some bash magic](https://www.roboleary.net/2022/02/24/xkcd-in-the-terminal-with-some-bash-magic.html)
+
 ## 🔥 Usage
 
 ```

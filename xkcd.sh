@@ -47,8 +47,7 @@ flag|v|verbose|output more
 flag|f|force|do not ask for confirmation (always yes)
 option|l|log_dir|folder for log files |$HOME/log/$script_prefix
 option|t|tmp_dir|folder for temp files|/tmp/$script_prefix
-param|1|action|action to perform: action1/action2
-param|?|input|input file/text
+param|1|action|action to perform: last/random
 " | grep -v '^#' | grep -v '^\s*$'
 }
 
@@ -61,16 +60,14 @@ main() {
 
   action=$(lower_case "$action")
   case $action in
-  action1)
-    #TIP: use «$script_prefix action1» to ...
-    #TIP:> $script_prefix action1 input.txt
-    do_action1
+  view | last)
+    #TIP: use «$script_prefix last» to view last/latest XKCD comic
+    do_view
     ;;
 
-  action2)
-    #TIP: use «$script_prefix action2» to ...
-    #TIP:> $script_prefix action2 input.txt output.pdf
-    do_action2
+  random)
+    #TIP: use «$script_prefix random» to view random XKCD comic
+    do_random
     ;;
 
   check | env)
@@ -85,7 +82,7 @@ main() {
   update)
     ## leave this default action, it will make it easier to test your script
     #TIP: use «$script_prefix update» to update to the latest version
-    #TIP:> $script_prefix check
+    #TIP:> $script_prefix update
     update_script_to_latest
     ;;
 
@@ -102,20 +99,43 @@ main() {
 ## Put your helper scripts here
 #####################################################################
 
-do_action1() {
-  log_to_file "action1"
+function do_view() {
+  log_to_file "view XKCD"
   # Examples of required binaries/scripts and how to install them
-  require_binary "convert" "imagemagick"
-  # require_binary "progressbar" "basher install pforret/progressbar"
-  # (code)
+  url="https://xkcd.com/"
+  img=$(curl -s -L "$url" | parse_image_url)
+  debug "IMG: $img"
+  image_in_terminal "$img"
 }
 
-do_action2() {
-  log_to_file "action2"
-  # (code)
-
+function do_random() {
+  log_to_file "random XKCD"
+  # Examples of required binaries/scripts and how to install them
+  url="https://c.xkcd.com/random/comic"
+  img=$(curl -s -L "$url" | parse_image_url)
+  debug "IMG: $img"
+  image_in_terminal "$img"
 }
 
+function parse_image_url(){
+  grep 'href= "https://imgs.xkcd.com/comics.*' |
+  cut -d'>' -f2 |
+  cut -d'<' -f1
+}
+
+function image_in_terminal(){
+  img="$1"
+  if [[ -n "$KITTY_WINDOW_ID" ]] ; then
+    ## Kitty terminal
+    kitty +kitten icat "$img"
+  elif [[ -n "$ITERM_PROFILE" ]] ; then
+    ## iTerm2 terminal
+    imgcat "$img"
+  else
+    die "No image viewer in this terminal (use Kitty/iTerm2)"
+  fi
+
+}
 #####################################################################
 ################### DO NOT MODIFY BELOW THIS LINE ###################
 #####################################################################

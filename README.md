@@ -8,27 +8,35 @@
 
 # xkcd
 
-View a XKCD comic in your console
+View a XKCD comic in your console. Works with [Kitty](https://sw.kovidgoyal.net/kitty/) and [iTerm2](https://iterm2.com/)
 
 inspired by [Read XKCD in the terminal with some bash magic](https://www.roboleary.net/2022/02/24/xkcd-in-the-terminal-with-some-bash-magic.html)
 
 ## 🔥 Usage
 
 ```
-Program: xkcd 0.0.1 by peter@forret.com
-Updated: 2022-03-16
 Description: View a XKCD comic in your console
-Usage: normal.sh [-h] [-q] [-v] [-f] [-l <log_dir>] [-t <tmp_dir>] <action> <input?>
+Usage: xkcd [-h] [-q] [-v] [-f] [-l <log_dir>] [-t <tmp_dir>] <action>
 Flags, options and parameters:
     -h|--help        : [flag] show usage [default: off]
     -q|--quiet       : [flag] no output [default: off]
     -v|--verbose     : [flag] output more [default: off]
     -f|--force       : [flag] do not ask for confirmation (always yes) [default: off]
-    -l|--log_dir <?> : [option] folder for log files   [default: /Users/pforret/log/normal]
-    -t|--tmp_dir <?> : [option] folder for temp files  [default: .tmp]
-    <action>         : [parameter] action to perform: analyze/convert
-    <input>          : [parameter] input file/text (optional)
-```
+    -l|--log_dir <?> : [option] folder for log files   [default: /Users/pforret/log/xkcd]
+    -t|--tmp_dir <?> : [option] folder for temp files  [default: /tmp/xkcd]
+    <action>         : [parameter] action to perform: last/random
+
+### TIPS & EXAMPLES
+* use xkcd last to view last/latest XKCD comic
+* use xkcd random to view random XKCD comic
+* use xkcd check to check if this script is ready to execute and what values the options/flags are
+  xkcd check
+* use xkcd env to generate an example .env file
+  xkcd env > .env
+* use xkcd update to update to the latest version
+  xkcd update
+* >>> bash script created with pforret/bashew
+* >>> for bash development, also check out pforret/setver and pforret/progressbar```
 
 ## ⚡️ Examples
 

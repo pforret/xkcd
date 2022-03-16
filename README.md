@@ -9,6 +9,8 @@
 
 View a XKCD comic in your console. Works with [Kitty](https://sw.kovidgoyal.net/kitty/) and [iTerm2](https://iterm2.com/)
 
+![pforret/xkcd](assets/pforret_xkcd.jpg)
+
 inspired by [Read XKCD in the terminal with some bash magic](https://www.roboleary.net/2022/02/24/xkcd-in-the-terminal-with-some-bash-magic.html)
 
 ## 🔥 Usage

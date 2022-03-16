@@ -36,13 +36,7 @@ Flags, options and parameters:
 * use xkcd update to update to the latest version
   xkcd update
 * >>> bash script created with pforret/bashew
-* >>> for bash development, also check out pforret/setver and pforret/progressbar```
-
-## ⚡️ Examples
-
-```bash
-> xkcd .
-# start PhpStorm with current folder as project
+* >>> for bash development, also check out pforret/setver and pforret/progressbar
 ```
 
 ## 🚀 Installation
